@@ -4,7 +4,7 @@ interface EnvUrl {
   login: string
   loginAction: string
   registrationAction: string
-  resourcePath: string
+  resourcesPath: string
 }
 
 interface EnvTitle {

@@ -17,7 +17,7 @@
     <div class="auth__wrapper">
       <header class="header">
         <div class="header__logo">
-          <img :src="getUrl(urls.resourcePath) + logo" class="app-logo" alt="logo">
+          <img :src="getUrl(urls.resourcesPath) + logo" class="app-logo" alt="logo">
         </div>
         <nav class="header__menu">
           <a class="header__menu-item"
@@ -69,7 +69,9 @@ import {useLogin} from "~/hooks";
 
 export default defineComponent({
   name: 'Layout',
-  setup: () => useLogin(),
+  setup() {
+    return useLogin();
+  },
   data: () => ({
     logo: '/images/viki-logo.svg',
     menuItems: [

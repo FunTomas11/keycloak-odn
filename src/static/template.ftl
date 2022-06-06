@@ -26,7 +26,8 @@
         "login": "${url.loginUrl}",
         "registration": "${url.registrationUrl}",
         "loginAction": "${url.loginAction}",
-        "registrationAction": "${url.registrationAction}"
+        "registrationAction": "${url.registrationAction}",
+        "resourcesPath": "${url.resourcesPath}"
       },
       "titles": {
         "loginProfileTitle": "${msg("loginProfileTitle")}",
