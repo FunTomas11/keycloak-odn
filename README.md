@@ -50,9 +50,6 @@ services:
       KEYCLOAK_PASSWORD: password
     ports:
       - 8080:8080
-    volumes:
-      - ./disable-theme-cache.cli:/opt/jboss/startup-scripts/disable-theme-cache.cli
-      - ./themes:/opt/jboss/keycloak/themes
     depends_on:
       - postgres
 ```
@@ -71,22 +68,56 @@ stop-embedded-server
 ```
 
 
-### 4. Copy actual themes folder
-
-```
-cp ck-theme_keycloak:/opt/jboss/keycloak/themes ./themes/
-```
-
-
-### 5. Run keycloak server
+### 4. Run keycloak server
 
 ```
 docker compose up
 ```
 
+### 5. Create new realm
+  For ex: http://localhost:8080/auth/admin/master/console/#/realms/test/theme-settings
+
+
+### 6. Copy actual themes folder
+
+```
+docker cp ck-theme_keycloak:/opt/jboss/keycloak/themes .
+```
+
+
+### 7. Add local theme
+
+```
+keycloak:
+...
+    ports: 
+      - 8080:8080
+    volumes:
+      - ./disable-theme-cache.cli:/opt/jboss/startup-scripts/disable-theme-cache.cli
+      - ./themes:/opt/jboss/keycloak/themes
+      ...
+```
+
+### 8. Keycloak VueJs theme
+```
+npm install
+```
+then 
+```
+npm run build 
+```
+or
+```
+npm run dev
+```
+for development server
 
 ### If you want reset keycloak settings:
 
 ```
 docker-compose down --volumes
+```
+or for all volumes
+```
+docker-compose down --rmi all --volumes
 ```
