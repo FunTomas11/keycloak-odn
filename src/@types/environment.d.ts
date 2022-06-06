@@ -4,6 +4,7 @@ interface EnvUrl {
   login: string
   loginAction: string
   registrationAction: string
+  resourcePath: string
 }
 
 interface EnvTitle {
@@ -54,6 +55,7 @@ interface EnvForm {
   registerLastName: string
   registerEmail: string
   registerUsername: string
+  password: string
 }
 
 interface EnvUser {

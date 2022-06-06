@@ -11,6 +11,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/balm-ui/dist/balm-ui.css"
+  />
     <#nested "head">
 </head>
 <body>
@@ -90,7 +94,7 @@
         "sumary": <#if displayMessage && message?has_content && (message.type != 'warning' || !isAppInitiatedAction??)>"${kcSanitize(message.summary)?no_esc}"<#else>""</#if>
       },
       "instruction": {
-        "emailLinkIdp1": "${msg("emailLinkIdp1", idpDisplayName, brokerContext.username, realm.displayName)}",
+        "emailLinkIdp1": "${msg("emailLinkIdp1", idpDisplayName, realm.displayName)}",
         "emailLinkIdp2": "${msg("emailLinkIdp2")}",
         "emailLinkIdp3": "${msg("emailLinkIdp3")}",
         "emailLinkIdp4": "${msg("emailLinkIdp4")}",
@@ -103,7 +107,7 @@
               "alias": "${p.alias}",
               "displayName": "${p.displayName!}",
               "loginUrl": "${p.loginUrl}"
-            }<#sep>, </#sep>
+            }<#sep> </#sep>
           </#list>
         </#if>
       ]

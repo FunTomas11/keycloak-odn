@@ -1,0 +1,608 @@
+$primary-space: 12px;
+
+$resource-width: 884px;
+
+$colors: (
+  color-1: #EF3340,
+  color-2: #9c27b0,
+  color-3: #EEE6F1, /* highlight / hover / focus color */ /* 12% of primary color (color-5)*/
+  color-4: rgba(116, 47, 138, 0.12),
+  color-5: #742F8A, /* primary color */
+  color-6: #742F8A,
+  color-7: #48D597,
+  color-8: #48D597,
+  color-9: #48D597,
+  color-10: #fff8e1,
+  color-11: #FFD700,
+  color-12: #FE5000,
+  color-13: #795649,
+  color-14: #fafafa,
+  color-15: #F8F8FB,
+  color-16: #E7E9F4,
+  color-17: #919D9D,
+  color-18: #212121,
+  color-19: #ffffff,
+  color-20: #000000,
+  color-21: #919D9D,
+  color-22: #919D9D,
+  math-keyboard-hue: 285,
+  highlight-inactive: #919D9D,
+  status-finished: #919D9D,
+  node-icon: #E7E9F4,
+  multiselect-icon-background: #E7E9F4,
+  multiselect-icon-border: #ffffff,
+  multiselect-icon-color: #ffffff,
+  highlighted-color: rgba(116, 47, 138, 0.12),
+  active-color: #ffffff,
+  authoring-tool-preview-mode-button: rgba(156, 39, 176, 0.3),
+  authoring-tool-preview-mode-button-active: rgba(156, 39, 176, 1),
+  progress-bar-buffer: #E7E9F4,
+  progress-bar-fill: #212121,
+  primary-text: rgba(0, 0, 0, 0.87),
+  secondary-text: rgba(0, 0, 0, 0.6),
+  disabled-text: rgba(0, 0, 0, 0.38),
+  dividers-color: rgba(0, 0, 0, 0.12),
+  dividers-color-2: rgba(0, 0, 0, 0.22),
+  home-icons-color: rgba(255, 255, 255, 0.8),
+  groups-background-color: #742F8A,
+  classes-background-color: #48D597,
+  class-icons-color: rgba(255, 255, 255, 0.8),
+  class-icons-color-hover: rgba(255, 255, 255, 1),
+  selected-card-color: rgba(30, 144, 255, 0.6),
+  keyword-text-color: rgba(0, 0, 0, 0.87),
+  keyword-icon-color: var(--disabled-text),
+  help-back-button-color: #be84c8,
+  disabled-toggle-bar: rgba(0, 0, 0, 0.1),
+  search-overlay: rgba(0, 0, 0, 0.8),
+  resources-count-text: rgba(0, 0, 0, 0.6),
+  card-new-icon: var(--disabled-text),
+  raised-text-color: #ffffff,
+  radio-circle: var(--secondary-text),
+  active-sidenav: #FFD700,
+  admin-icon-background: #e0e0e0,
+  privilege-icon-background: var(--color-16),
+  warn-overlay: rgba(244, 67, 54, 0.12),
+  focus-link-color: #be84c8,
+  slide-toggle-checked: #be84c8,
+  mat-field-underline: rgba(0, 0, 0, 0.42),
+  sidenav-background-color: #742F8A,
+  nav-icon-color: #EFEAF5,
+  active-nav-icon: #FFD700,
+  toolbar-title-color: rgba(0, 0, 0, 0.87),
+  sub-level-bg: #f2f2f2,
+  anchor-color: rgba(255, 255, 255, 0.12),
+  anchor-text: #EFEAF5,
+  sidenav-button-hover-background: #431F52,
+  sidenav-button-color: #EFEAF5,
+  sidenav-active-button-border-color: #FFD700,
+  sidenav-badge-color: #FFD700,
+  sidenav-badge-active-color: #FFD700,
+  sidenav-active-button-background: rgba(255, 255, 255, 0.12),
+  sidenav-toolbar-border-color: #3c3c3c,
+  ib-hover-background: #d7dce2,
+  datepicker-color: rgba(0, 0, 0, 0.38),
+  filters-border-color: #e0cf9d,
+  checkbox-frame: rgba(0, 0, 0, 0.54),
+  checkmark-path-color: #fafafa,
+  ovrelay-background: rgba(0, 0, 0, 0.8),
+  class-icon-bg: #75c6bf,
+  game-icon-color: #009CDE,
+  font-stack: (Segoe UI, Helvetica Neue, Arial, sans-serif),
+  secondary-font-stack: (Segoe UI Semibold, Helvetica Neue, Arial, sans-serif),
+  drag-file-layer: #742F8A19,
+  focus-overlay: rgba(116, 47, 138, 0.12),
+  theme-thumb-border-color: #646464,
+  active-tab-border-color: #742F8A,
+  tab-text-color: #967FAF,
+  back-button-background: #FFD700,
+  back-button-color: #742F8A,
+  disabled-toolbar-icon: rgba(255, 255, 255, 0.38),
+  overlay-background: rgba(26, 10, 31, 0.9),
+  education-material-icon-color: #48D597,
+  collection-icon-color: #009688,
+  file-icon-color: #009CDE,
+  rich-text-icon-color: #742F8A,
+  external-link-icon-color: #E40046,
+  authoring-tool-document-icon-color: #FFD700,
+  quiz-icon-color: #FE5000,
+  answer-with-file-color: #795548,
+  youtube-icon-color: #EF3340,
+  vimeo-icon-color: #009CDE,
+  geogebra-icon-color: #742F8A,
+  embed-icon-color: #3f51b5,
+  ib-icon-color: #009CDE,
+  assignment-template-color: #009CDE,
+  resource-icon-color: #009CDE,
+  assignment-icon-color: #009CDE,
+  test-icon-color: #EC407A,
+  student-icon-color: #EF3340,
+  task-icon-color: #FE5000,
+  document-icon-color: #E40046,
+  video-icon-color: #EF3340,
+  green-score-color: #48D597,
+  orange-score-color: #FE9666,
+  red-score-color: #E40046,
+  group-color: #009cde,
+  card-selection-color: rgba(156, 39, 176, 0.6),
+  button-hover: rgba(116, 47, 138, 0.12),
+  mat-button-focus-overlay: rgba(0, 0, 0, .12),
+  add-resource-btn-color: #48D597,
+  landing-page-primary-color: #742F8A,
+  inactive-menu-item-color: #967FAF,
+  default-background: #FFFFFF,
+  top-bar-font-color: rgba(255, 255, 255, .54),
+  top-bar-icon-color: rgba(255, 255, 255, .38),
+  top-bar-hover-color: #FFFFFF,
+  header-cudeo-text-color: #919D9D,
+  primary-text-color: #585858,
+  primary-button-text-color: #FFD700,
+  materials-button-text-color: #742F8A,
+  materials-hover-color: rgba(116, 47, 138, .12),
+  materials-heading-text-color: #FFD700,
+  materials-text-color: #FFFFFF,
+  materials-button-background-color: #FFD700,
+  mobile-apps-background-color: #E7E9F4,
+  mobile-apps-button-hover-color: rgba(255, 255, 255, .5),
+  menu-divider-line-color: #E7E9F4,
+  dimmer-color: rgba(26, 10, 31, .9),
+  contact-background-color: #FFFFFF,
+  contact-link-hover-color: rgba(116, 47, 138, .12),
+  login-page-footer-color: #929293,
+  snackbar-action-color: #C381D5,
+  awaiting-approval-color: #FE5000,
+  awaiting-approval-list-row-color: rgba(254, 80, 0, .12),
+  embed-border-color1: rgba(0, 0, 0, 0.12),
+  embed-border-color2: rgba(0, 0, 0, 0.12),
+  embed-normal-divider: rgba(0, 0, 0, 0.12),
+  mat-error-color: #f44336,
+  chip-cancel-backgound: #877e65,
+  chip-background: #fff9d9,
+  riam-color: #0072C6,
+  riam-hover-color: #005998,
+  calendar-font-color: #555555,
+  calendar-weekend-font-color: #FE5000,
+  calendar-info-background-color: #F8F8FB,
+  landing-page-border-color: #FCCD57,
+  landing-page-hover-link-color: #642977,
+  notification-row-udread-bacground-color: #FFD700,
+  scrollbar-color: #c0c0c0,
+  role-parent-color: #009CDE,
+  role-student-color: #EF3340,
+  role-teacher-color: #48D597,
+  comment-background: #F8F8FB,
+  note-notification-color: #795548,
+  folder-icon-color: rgba(0, 0, 0, 0.38),
+  resolved-issue-background-color: #e3f4ef,
+  blocked-resource-background-color: #f7e0e4,
+  voucher-color: #FFF5BF,
+  disabled-overlay-background: rgba(0, 0, 0, 0.75),
+  disabled-overlay-button: #C281D3,
+  disabled-overlay-text: #FFFFFF,
+);
+
+$hcTheme: (
+  color-1: #EF3340,
+  color-2: #63D84F,
+  color-3: #2d2d2d, /* highlight / hover / focus color */
+  color-4: #FBC02D,
+  color-5: #FBC02D,
+  color-6: #FC560B,
+  color-7: #FF6977,
+  color-8: #EB59E7,
+  color-9: #48D597,
+  color-10: #000000,
+  color-11: #000000,
+  color-12: #FBC02D,
+  color-13: #86A9B6,
+  color-14: #050505,
+  color-15: #0A0A0A,
+  color-16: #2d2d2d,
+  color-17: #ffffff,
+  color-18: #000000,
+  color-19: #0A0A0A,
+  color-20: #FFFFFF,
+  color-21: #8A8A8A,
+  color-22: #16E19C,
+  math-keyboard-hue: 43,
+  highlight-inactive: #2d2d2d,
+  node-file-icon: #D6D6D6,
+  multiselect-icon-background: #000000,
+  multiselect-icon-border: #ffffff,
+  multiselect-icon-color: #ffffff,
+  highlighted-color: #000000,
+  active-color: #2d2d2d,
+  authoring-tool-preview-mode-button: rgba(99, 216, 79, 0.5),
+  authoring-tool-preview-mode-button-active: rgba(99, 216, 79, 1),
+  progress-bar-buffer: #8A8A8A,
+  progress-bar-fill: #1F1F1F,
+  status-finished: #9F8274,
+  primary-text: rgba(255, 255, 255, 0.87),
+  secondary-text: rgba(255, 255, 255, 0.6),
+  disabled-text: rgba(255, 255, 255, 0.38),
+  dividers-color: rgba(255, 255, 255, 0.12),
+  dividers-color-2: rgba(255, 255, 255, 0.22),
+  home-icons-color: rgba(0, 0, 0, 0.8),
+  groups-background-color: #742F8A,
+  classes-background-color: #48D597,
+  selected-card-color: rgba(30, 144, 255, 0.6),
+  class-icons-color: #000000,
+  class-icons-color-hover: #000000,
+  keyword-text-color: #000000,
+  keyword-icon-color: #000000,
+  search-overlay: rgba(0, 0, 0, 0.4),
+  disabled-toggle-bar: rgba(255, 255, 255, 0.2),
+  resources-count-text: rgba(0, 0, 0, 0.6),
+  card-new-icon: #ffffff,
+  raised-text-color: #000000,
+  radio-circle: #ffffff,
+  active-sidenav: #ffffff,
+  admin-icon-background: #ffffff,
+  privilege-icon-background: var(--color-20),
+  warn-overlay: rgba(11, 188, 201, 0.12),
+  focus-link-color: #FC560B,
+  slide-toggle-checked: #C8902A,
+  mat-field-underline: rgba(255, 255, 255, 0.42),
+  sidenav-background-color: #0A0A0A,
+  sidenav-button-hover-background: #FFF,
+  sidenav-button-color: #0A0A0A,
+  sidenav-active-button-border-color: #FFF,
+  sidenav-badge-color: #FFD700,
+  sidenav-badge-active-color: #000,
+  sidenav-active-button-background: #FFD700,
+  nav-icon-color: #ffffff,
+  active-nav-icon: #dedede,
+  toolbar-title-color: #ffffff,
+  sub-level-bg: #2d2d2d,
+  anchor-color: #000000,
+  anchor-text: #a7a9ae,
+  game-icon-color: #FBC02D,
+  sidenav-toolbar-border-color: #3c3c3c,
+  mat-select-arrow: rgba(255, 255, 255, 0.54),
+  ib-hover-background: #000000,
+  datepicker-color: #FBC02D,
+  font-stack: (Segoe UI, Helvetica Neue, Arial, sans-serif),
+  secondary-font-stack: (Segoe UI Semibold, Helvetica Neue, Arial, sans-serif),
+  filters-border-color: #ffffff,
+  checkbox-frame: #000000,
+  overlay-background: rgba(0, 0, 0, 0.95),
+  focus-overlay: rgba(255, 255, 255, 0.2),
+  overlay-color: rgba(255, 255, 255, 0.8),
+  checkmark-path-color: #000000,
+  theme-thumb-border-color: #ffffff,
+  drag-file-layer: rgba(33, 150, 243, 0.1),
+  tab-text-color: #fff,
+  help-back-button-color: #be84c8,
+  ovrelay-background: rgba(0, 0, 0, 0.8),
+  class-icon-bg: #75c6bf,
+  active-tab-border-color: #FFFFFF,
+  back-button-background: #FFD700,
+  back-button-color: #742F8A,
+  disabled-toolbar-icon: rgba(255, 255, 255, 0.38),
+  education-material-icon-color: #8758BDFF,
+  collection-icon-color: #B350AF,
+  file-icon-color: #FC560B,
+  rich-text-icon-color: #63D84F,
+  external-link-icon-color: #16E19C,
+  authoring-tool-document-icon-color: #fbc02d,
+  quiz-icon-color: #B350AF,
+  answer-with-file-color: #4dd0e1,
+  youtube-icon-color: #0BBCC9,
+  vimeo-icon-color: #FC560B,
+  geogebra-icon-color: #FBC02D,
+  embed-icon-color: #3F7EB5FF,
+  ib-icon-color: #FC560B,
+  assignment-template-color: #FBC02D,
+  resource-icon-color: #FBC02D,
+  assignment-icon-color: #FBC02D,
+  test-icon-color: #00E676,
+  student-icon-color: #0BBCC9,
+  task-icon-color: #FBC02D,
+  document-icon-color: #16E19C,
+  video-icon-color: #0BBCC9,
+  green-score-color: #3cffe7,
+  orange-score-color: #febc83,
+  red-score-color: #ff4c62,
+  card-selection-color: rgba(251, 192, 45, 0.6),
+  button-hover: #333333,
+  mat-button-focus-overlay: rgba(0, 0, 0, .12),
+  add-resource-btn-color: #FBC02D,
+  at-empty-state-link-hover-color: #FBC02D,
+  landing-page-primary-color: #FFD700,
+  inactive-menu-item-color: #FFFFFF,
+  default-background: #1F1F1F,
+  top-bar-font-color: #000000,
+  top-bar-icon-color: #000000,
+  top-bar-hover-color: #000000,
+  header-cudeo-text-color: #BFBFBF,
+  primary-text-color: #FFFFFF,
+  primary-button-text-color: #000000,
+  materials-heading-text-color: #FFD700,
+  materials-text-color: #FFFFFF,
+  materials-button-background-color: #FFD700,
+  materials-hover-color: rgba(255, 215, 0, .12),
+  materials-button-text-color: #000000,
+  mobile-apps-background-color: #1F1F1F,
+  mobile-apps-button-hover-color: rgba(255, 255, 255, .3),
+  menu-divider-line-color: #E7E9F4,
+  dimmer-color: rgba(26, 10, 31, .9),
+  contact-background-color: #000000,
+  contact-link-hover-color: rgba(255, 215, 0, .3),
+  login-page-footer-color: #FFFFFF,
+  snackbar-action-color: #C381D5,
+  awaiting-approval-color: #FF6977,
+  awaiting-approval-list-row-color: rgba(255, 105, 119, .12),
+  embed-border-color1: rgba(255, 255, 255, 0.12),
+  embed-border-color2: rgba(255, 255, 255, 0.12),
+  embed-normal-divider: rgba(255, 255, 255, 0.12),
+  mat-error-color: #f44336,
+  chip-background: #000000,
+  chip-cancel-backgound: #877e65,
+  riam-color: #FBC02D,
+  riam-hover-color: #FCCD57,
+  calendar-font-color: #FFFFFF,
+  calendar-weekend-font-color: #FBC02D,
+  calendar-info-background-color: #000000,
+  landing-page-border-color: #FCCD57,
+  landing-page-hover-link-color: #FCCD57,
+  notification-row-udread-bacground-color: #742F8A,
+  scrollbar-color: #0A0A0A,
+  role-parent-color: #009CDE,
+  role-student-color: #EF3340,
+  role-teacher-color: #FF6977,
+  comment-background: #1F1F1F,
+  note-notification-color: #FE9666,
+  folder-icon-color: rgba(255, 255, 255, 0.38),
+  resolved-issue-background-color: #e3f4ef,
+  blocked-resource-background-color: #f7e0e4,
+  voucher-color: #000,
+  disabled-overlay-background: rgba(0, 0, 0, 0.75),
+  disabled-overlay-button: #FBC02D,
+  disabled-overlay-text: #FFFFFF,
+);
+
+$_primary-text: rgba(0, 0, 0, 0.87);
+$_secondary-text: rgba(0, 0, 0, 0.54);
+$_disabled-text: rgba(0, 0, 0, 0.38); // color for icons
+$_dividers-color: rgba(0, 0, 0, 0.12);
+$_dividers-color-2: rgba(0, 0, 0, 0.22);
+$_overlay-color: rgba(0, 0, 0, 0.9);
+
+//responsive breakpoints variables
+$res-small: 576px;
+$res-medium: 768px;
+$res-large: 992px;
+$res-xlarge: 1200px;
+
+// Mixins
+
+@mixin mdShadow-z1() {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+@mixin mdShadow-z2() {
+  box-shadow: 0 3px 6px -1px rgba(0, 0, 0, 0.34);
+}
+
+@mixin transition-for($el) {
+  transition: $el 0.2s ease-in-out;
+}
+
+@mixin ellipsis() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin overflow-ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin multi-line-ellipsis($lines: 1) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin fill-container() {
+  position: absolute;
+  inset: 0;
+}
+
+@mixin size-3_2($width: 108px) {
+  width: $width;
+  height: $width / 1.5;
+  min-width: $width;
+  min-height: $width / 1.5;
+}
+
+@mixin icon-size($size, $important: "") {
+  width: $size * 1px#{ $important};
+  height: $size * 1px#{ $important};
+  font-size: $size * 1px#{ $important};
+}
+
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+@mixin box-shadow($value, $varName, $important:"") {
+  $property: box-shadow;
+  #{$property}: $value var(--#{$varName}, map-get($colors, $varName)) #{ $important};
+
+  .internet-explorer & {
+    #{$property}: $value #{map-get($colors, $varName)} #{ $important};
+  }
+
+  .high-contrast-theme.internet-explorer & {
+    #{$property}: map-get($hcTheme, $varName)#{ $important};
+  }
+}
+
+@mixin var($property, $varName, $important:"") {
+  #{$property}: var(--#{$varName}, map-get($colors, $varName)) #{ $important};
+
+  .internet-explorer & {
+    #{$property}: map-get($colors, $varName)#{ $important};
+  }
+
+  .high-contrast-theme.internet-explorer & {
+    #{$property}: map-get($hcTheme, $varName)#{ $important};
+  }
+}
+
+@mixin ie {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root('::-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-ms-input-placeholder') {
+    @content;
+  }
+}
+
+@mixin icon-style($content) {
+  content: $content;
+  font-family: 'Material Icons';
+}
+
+@mixin limit-lines($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@mixin hover-button($icon-size: 18, $icon-margin: $primary-space / 4) {
+  & {
+    border: none;
+    cursor: pointer;
+    border-radius: 16px;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    top: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    position: relative;
+    height: 26px;
+    padding: 0 $primary-space / 2;
+    @include var(color, color-5, !important);
+    display: inline-flex;
+    white-space: nowrap;
+    background-color: transparent;
+    @include transition-for(background-color);
+    line-height: 26px;
+
+    &:hover {
+      @include var(color, color-5, !important);
+      @include var(background-color, button-hover)
+    }
+
+    &:focus {
+      @include var(color, color-5, !important);
+      @include var(background-color, button-hover)
+    }
+
+    mat-icon {
+      @include icon-size($icon-size, !important);
+      @include var(color, disabled-text);
+      margin-right: $icon-margin !important;
+    }
+
+    span,
+    a {
+      line-height: 26px;
+    }
+  }
+  &:disabled {
+    @include var(color, disabled-text, !important);
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+
+@mixin indicator-icon() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(2px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(0px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(2px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(2px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+@keyframes fadeOutWithDelay {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes fadeInWithDelay {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+  }
+}

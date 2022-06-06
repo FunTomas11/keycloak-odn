@@ -40,7 +40,9 @@ module.exports = (env, argv) => {
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.vue', '.json', '.scss'],
       alias: {
-        '~': path.resolve(__dirname, 'src')
+        '~': path.resolve(__dirname, 'src'),
+        'balm-ui-plus': 'balm-ui/dist/balm-ui-plus.js',
+        'balm-ui-css': 'balm-ui/dist/balm-ui.css'
       }
     },
     mode: isDevelopment ? 'development' : 'production',

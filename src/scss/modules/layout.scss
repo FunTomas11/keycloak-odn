@@ -1,55 +1,369 @@
-.layout {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
+//@import '//base/var.scss';
 
-  &-box {
+$menu-breakpoint: 1060px;
+
+@mixin hc {
+  :host(.landing-page--high-contrast) & {
+    @content
+  }
+}
+
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+.auth {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 100%;
+  height: 100%;
+  @include var(background-color, default-background);
+  padding-top: 0;
+
+  @media screen and (min-width: $menu-breakpoint) {
+    padding-top: 36px;
+  }
+
+  &--show-mobile-menu {
+    overflow: hidden;
+  }
+
+  &--enabled-project-theme {
+    .header__menu-item,
+    .mobile-menu__item {
+      @include var(color, color-5, !important);
+
+      &:hover,
+      &:focus {
+        @include var(color, secondary-text, !important);
+        @include var(border-color, secondary-text, !important);
+      }
+    }
+  }
+
+  &__wrapper {
+    height: 100%;
+    position: relative;
+    padding-top: 88px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header {
     display: flex;
     flex-direction: row;
-    align-items: stretch;
-    justify-content: stretch;
-    width: 840px;
-    min-height: 440px;
-    background: #fff;
-    border-radius: 7px;
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    width: 100%;
+    padding-left: 2* $primary-space;
+    padding-right: 2* $primary-space;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 502;
+    @include var(background-color, default-background);
 
-    &-img {
-      display: flex;
-      width: 420px;
-      min-height: 100%;
-      background: url('https://unsplash.com/photos/hpjSkU2UYSU/download?ixid=MnwxMjA3fDB8MXxzZWFyY2h8MTN8fGVjb21tZXJjZXx8MHx8fHwxNjQzNzkyMzQw&force=true&w=640');
-      background-position: center;
-      background-size: cover;
-      border-radius: 7px 0 0 7px;
+    button {
+      margin-top: 20px;
+      margin-left: 23px;
     }
 
-    &-form {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      width: 420px;
-      min-height: 100%;
-      padding: 30px;
+    &__logo {
+      flex: 1 1 40%;
 
-      .logo {
+      img {
+        cursor: pointer;
+      }
+    }
+
+    &__menu {
+      display: none;
+
+      @media screen and (min-width: $menu-breakpoint) {
+        flex: 1 1 60%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-end;
+        font-size: 16px;
+        position: relative;
+        bottom: 4px;
+        @include var(color, inactive-menu-item-color);
+      }
+    }
+
+    &__menu-item {
+      display: inline-flex;
+      align-items: center;
+      padding: 16px;
+      height: 56px;
+      border-bottom: 2px solid;
+      border-color: transparent;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      @include var(color, inactive-menu-item-color);
+
+      &:hover,
+      &:focus {
+        @include var(color, color-5);
+        @include var(border-color, color-5);
+      }
+
+      &:first-of-type  .material-icons {
+        @include icon-size(20);
+      }
+
+      .material-icons {
+        @include icon-size(26);
+        margin-right: 5px;
+        position: relative;
+        top: 2px;
+      }
+    }
+
+    &__menu-button {
+      display: block;
+
+      @media screen and (min-width: $menu-breakpoint) {
+        display: none;
+      }
+
+      .material-icons {
+        position: relative;
+        top: 1px;
+
+        @include var(color, color-5);
+        @include icon-size(26, !important);
+      }
+    }
+  }
+
+  &__container {
+    margin: 0 12px;
+
+    @media screen and (min-width: $res-small) {
+      margin: 0 auto;
+    }
+  }
+
+  .hint {
+    padding-top: $primary-space / 2;
+  }
+
+  &.isFooterUrl {
+    .auth__container {
+      padding-bottom: 10vh;
+
+      @media screen and (min-width: $res-large) {
+        padding-bottom: 7vh;
+      }
+    }
+  }
+
+  .top-bar {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    font-size: 13px;
+    height: 32px;
+    width: 100%;
+    padding: 0 12px;
+    text-align: center;
+    z-index: 502;
+    @include var(background-color, color-5);
+    @include var(color, top-bar-font-color);
+
+    @media screen and (min-width: $menu-breakpoint) {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 24px;
+      height: 36px;
+      text-align: left;
+    }
+
+    &__actions {
+      display: none;
+
+      @media screen and (min-width: $menu-breakpoint) {
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: center;
-        gap: 10px;
-        font-size: 20px;
-        font-weight: bold;
-        color: $darkBlue;
-        text-align: center;
-        margin-bottom: 20px;
+        justify-content: flex-end;
+      }
+    }
 
-        i {
-          font-size: 30px;
+    &__language-button {
+      margin-right: 12px !important;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      text-transform: none;
+      font-weight: 400;
+      font-family: var(--font-stack, Segoe UI) !important;
+    }
+
+    &__language-button,
+    &__action {
+      display: flex;
+      align-items: center;
+      margin-right: 22px;
+      cursor: pointer;
+      border-bottom: 1px solid transparent;
+      @include var(color, primary-button-text-color);
+
+      .material-icons {
+        position: relative;
+        top: 1px;
+        margin-right: 6px;
+        @include icon-size(17, !important);
+        @include var(color, primary-button-text-color, !important);
+      }
+
+      &:hover,
+      &:focus {
+        @include var(color, top-bar-hover-color, !important);
+
+        .material-icons,
+        span {
+          @include var(color, top-bar-hover-color, !important);
+        }
+
+        @include hc {
+          border-bottom: 1px solid;
+          @include var(border-color, top-bar-hover-color, !important);
         }
       }
     }
+
+    > span,
+    > a {
+      position: relative;
+      bottom: 2px;
+    }
+  }
+
+  .mobile-menu {
+    padding: 12px 0;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    top: -379px;
+    left: 0;
+    width: 100%;
+    z-index: 501;
+    transition: top .25s ease-in-out;
+    max-height: calc(100% - 107px);
+    overflow-y: auto;
+    @include var(background-color, default-background);
+
+    @media screen and (min-width: $menu-breakpoint) {
+      display: none;
+    }
+
+    &--show {
+      top: 90px !important;
+    }
+
+    &__language-flag {
+      margin-right: 28px;
+    }
+
+    &__item {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      height: 48px;
+      margin: 0 16px;
+      padding: 0 16px;
+      flex: 1 0 auto;
+      border-left: 2px solid transparent;
+      @include var(color, inactive-menu-item-color);
+
+      &:hover,
+      &:focus {
+        @include var(color, color-5);
+        @include var(border-color, color-5);
+      }
+
+      &--small {
+        height: 34px !important;
+
+        .material-icons {
+          @include icon-size(20, !important);
+        }
+
+        span {
+          font-size: 14px;
+        }
+      }
+
+      .material-icons {
+        margin-right: 28px;
+        @include icon-size(26);
+
+        &:first-of-type .material-icons {
+          @include icon-size(20);
+        }
+      }
+
+      span {
+        position: relative;
+        bottom: 2px;
+        font-size: 16px;
+      }
+    }
+
+    hr {
+      width: 100%;
+      margin: 6px 0;
+      @include var(background-color, menu-divider-line-color);
+    }
+  }
+}
+
+.dimmer {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 500;
+  opacity: 0;
+  transition: opacity .25s ease-in-out;
+  @include var(background-color, dimmer-color);
+
+  @media screen and (min-width: $menu-breakpoint) {
+    display: none !important;
+  }
+
+  &--show {
+    opacity: 1;
+    left: 0;
+  }
+
+  &--hidden {
+    z-index: -1 !important;
+  }
+}
+
+.generic-auth-area {
+  &__form-container {
+    width: 100%;
+    max-width: 100%;
+    @media screen and (min-width: $res-small) {
+      max-width: 350px;
+    }
+
+    mat-form-field {
+      width: 100%;
+    }
+  }
+  &__image-container {
+    width: 100%;
   }
 }

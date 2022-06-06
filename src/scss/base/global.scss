@@ -4,18 +4,44 @@
   box-sizing: border-box;
 }
 
-html,
-body {
+
+
+body, html {
   height: 100%;
+  min-height: 100%;
+  width: 100%;
+  @include var(font-family, font-stack, !important);
+  line-height: normal;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @include var(color, primary-text);
+  @include var(background-color, color-19)
 }
 
-body {
-  background-color: $bgColor;
-  font-family: $fontBase;
-  font-weight: $fontWeight;
-  font-size: $fontSize;
-  color: $textColor;
+button, input, optgroup, select, textarea {
+  line-height: normal;
 }
+
+.button-link, button, .action {
+  @include var(font-family, secondary-font-stack, !important);
+  font-size: 14px !important;
+  text-transform: uppercase;
+  @include transition-for(background);
+  position: relative;
+}
+
+.app-logo {
+  height: 75px;
+  display: inline-block;
+  margin-top: 15px;
+  max-width: 100%;
+}
+
+
 
 #app {
   height: 100%;
