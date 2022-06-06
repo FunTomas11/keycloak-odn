@@ -2,60 +2,65 @@
 
 - You need to have docker installed on your development environment
 - Follow the instructions bellow to run this theme
-- https://youtu.be/qrjjiG1206E ( tutorial pt-br )
 
 
-### 1. Run database for Keycloak (Postgres)
-Attention: Configure Volume folder in your environment and replace this (~/database/postgres)
+### 1. Dockerfile
 
 ```
-docker run -d --name postgres \
-    -p 5432:5432 \
-    -e POSTGRES_DB=keycloak \
-    -e POSTGRES_USER=postgres \
-    -e POSTGRES_PASSWORD=postgres \
-    -v ~/database/postgres:/var/lib/postgresql/data \
-    --restart always postgres:latest
+FROM jboss/keycloak:16.1.0
+
+RUN sed -i -E "s/(<staticMaxAge>)2592000(<\/staticMaxAge>)/\1\-1\2/" /opt/jboss/keycloak/standalone/configuration/standalone.xml
+RUN sed -i -E "s/(<cacheThemes>)true(<\/cacheThemes>)/\1false\2/" /opt/jboss/keycloak/standalone/configuration/standalone.xml
+RUN sed -i -E "s/(<cacheTemplates>)true(<\/cacheTemplates>)/\1false\2/" /opt/jboss/keycloak/standalone/configuration/standalone.xml
 
 ```
 
 
-### 2. Run Keycloak with correct configuration database
+### 2. docker-compose.yml
 
 ```
-docker run -d --name keycloak \
-    -p 8080:8080 \
-    -e DB_VENDOR=postgres \
-    -e DB_ADDR=postgres \
-    -e DB_DATABASE=keycloak \
-    -e DB_SCHEMA=public \
-    -e DB_USER=postgres \
-    -e DB_PASSWORD=postgres \
-    -e KEYCLOAK_USER=admin \
-    -e KEYCLOAK_PASSWORD=admin \
-    --link postgres \
-    --restart always quay.io/keycloak/keycloak:16.1.0
+version: "3"
+
+volumes:
+  postgres_data:
+    driver: local
+
+services:
+  postgres:
+    image: postgres:9.6
+    container_name: ck-theme_postgres
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  keycloak:
+    build: .
+    container_name: ck-theme_keycloak
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgres
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_SCHEMA: public
+      DB_PASSWORD: password
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: password
+    ports:
+      - 8080:8080
+    volumes:
+      - ./disable-theme-cache.cli:/opt/jboss/startup-scripts/disable-theme-cache.cli
+      - ./themes:/opt/jboss/keycloak/themes
+    depends_on:
+      - postgres
 ```
 
 
 
-### 3. Create a folder "keycloak" in your environment and copy themes folder from docker container
+### 3. disable-theme-cache.cli
 
-```
-mkdir keycloak
-cd keycloak
-docker cp keycloak:/opt/jboss/keycloak/themes .
-```
-
-
-### 4. Clone this repository inside keycloak folder
-
-```
-git clone https://github.com/wrsouza/keycloak-theme-vuejs
-```
-
-
-### 5. Create a file "disable-theme-cache.cli" inside keycloak folder and insert script bellow.
 
 ```
 embed-server --std-out=echo --server-config=standalone-ha.xml
@@ -63,52 +68,25 @@ embed-server --std-out=echo --server-config=standalone-ha.xml
 /subsystem=keycloak-server/theme=defaults/:write-attribute(name=cacheTemplates,value=false)
 /subsystem=keycloak-server/theme=defaults/:write-attribute(name=staticMaxAge,value=-1)
 stop-embedded-server
-
 ```
 
 
-### 6. Remove keycloak container
+### 4. Copy actual themes folder
+
 ```
-docker rm -f keycloak
+cp ck-theme_keycloak:/opt/jboss/keycloak/themes ./themes/
 ```
 
 
-### 7. Run keycloak container with volumes for disable cache and share themes folder
+### 5. Run keycloak server
 
 ```
-docker run -d --name keycloak \
-    -p 8080:8080 \
-    -e DB_VENDOR=postgres \
-    -e DB_ADDR=postgres \
-    -e DB_DATABASE=keycloak \
-    -e DB_SCHEMA=public \
-    -e DB_USER=postgres \
-    -e DB_PASSWORD=postgres \
-    -e KEYCLOAK_USER=admin \
-    -e KEYCLOAK_PASSWORD=admin \
-    --link postgres \
-    -v ~/keycloak/themes:/opt/jboss/keycloak/themes \
-    -v ~/keycloak/disable-theme-cache.cli:/opt/jboss/startup-scripts/disable-theme-cache.cli \
-    --restart always quay.io/keycloak/keycloak:16.1.0
+docker compose up
 ```
 
-### 8. Open keycloak-theme-vuejs repository folder and install with yarn
-```
-cd keycloak-theme-vuejs
-yarn
-```
 
-### 9. Configure theme name inside webpack.config.js (THEME_NAME) and run the command bellow
-```
-yarn build
-```
+### If you want reset keycloak settings:
 
-### 10. Open browser with Keycloak URL and click on Administration Console for login
 ```
-keycloakUrl: http://localhost:8080
-username: admin
-password: admin
+docker-compose down --volumes
 ```
-
-### 11. Create your realm and select keycloak theme in realm settings.
-
