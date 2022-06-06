@@ -56,7 +56,7 @@ services:
 
 
 
-### 3. disable-theme-cache.cli
+### 3. Create file: disable-theme-cache.cli
 
 
 ```
