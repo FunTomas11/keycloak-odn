@@ -16,7 +16,7 @@ const entries = [
 ]
 
 module.exports = (env, argv) => {
-  const isDevelopment = argv.mode !== 'production' ? true : false
+  const isDevelopment = argv.mode !== 'production'
   return {
     entry: () => {
       let entryList = {}
@@ -41,12 +41,10 @@ module.exports = (env, argv) => {
       extensions: ['.ts', '.tsx', '.js', '.vue', '.json', '.scss'],
       alias: {
         '~': path.resolve(__dirname, 'src'),
-        'balm-ui-plus': 'balm-ui/dist/balm-ui-plus.js',
-        'balm-ui-css': 'balm-ui/dist/balm-ui.css'
       }
     },
     mode: isDevelopment ? 'development' : 'production',
-    watch: isDevelopment ? true : false,
+    watch: isDevelopment,
     module: {
       rules: [
         {

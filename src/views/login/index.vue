@@ -62,11 +62,10 @@
   </layout>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue'
 import Layout from '~/components/Layout.vue'
 import { useLogin } from '~/hooks'
 
-export default defineComponent({
+export default {
   name: 'Login',
   components: {
     Layout
@@ -77,5 +76,5 @@ export default defineComponent({
   mounted() {
     console.log('Login')
   }
-})
+}
 </script>
