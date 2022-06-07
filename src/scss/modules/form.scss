@@ -4,6 +4,10 @@
 }
 
 .auth-area {
+  
+  &__input {
+    height: 2.5rem !important;
+  }
 
   &__note {
     @include var(color, secondary-text);
