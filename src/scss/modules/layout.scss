@@ -1,5 +1,3 @@
-//@import '//base/var.scss';
-
 $menu-breakpoint: 1060px;
 
 @mixin hc {
@@ -21,7 +19,7 @@ $menu-breakpoint: 1060px;
   position: relative;
   min-height: 100%;
   height: 100%;
-  @include var(background-color, default-background);
+  background-color: $default-background;
   padding-top: 0;
 
   @media screen and (min-width: $menu-breakpoint) {
@@ -35,12 +33,12 @@ $menu-breakpoint: 1060px;
   &--enabled-project-theme {
     .header__menu-item,
     .mobile-menu__item {
-      @include var(color, color-5, !important);
+      color: $secondary-color !important;
 
       &:hover,
       &:focus {
-        @include var(color, secondary-text, !important);
-        @include var(border-color, secondary-text, !important);
+        color: $secondary-text !important;
+        background-color: $secondary-text !important;
       }
     }
   }
@@ -64,7 +62,7 @@ $menu-breakpoint: 1060px;
     top: 0;
     right: 0;
     z-index: 502;
-    @include var(background-color, default-background);
+    background-color: $default-background;
 
     button {
       margin-top: 20px;
@@ -107,11 +105,11 @@ $menu-breakpoint: 1060px;
 
       &:hover,
       &:focus {
-        @include var(color, color-5);
-        @include var(border-color, color-5);
+        color: $secondary-color;
+        border-color: $secondary-color;
       }
 
-      &:first-of-type  .material-icons {
+      &:first-of-type .material-icons {
         @include icon-size(20);
       }
 
@@ -134,7 +132,7 @@ $menu-breakpoint: 1060px;
         position: relative;
         top: 1px;
 
-        @include var(color, color-5);
+        color: $secondary-color;
         @include icon-size(26, !important);
       }
     }
@@ -145,6 +143,14 @@ $menu-breakpoint: 1060px;
 
     @media screen and (min-width: $res-small) {
       margin: 0 auto;
+    }
+
+    .generic-auth-area {
+      flex-direction: row;
+      box-sizing: border-box;
+      display: flex;
+      place-content: center;
+      align-items: center;
     }
   }
 
@@ -174,8 +180,8 @@ $menu-breakpoint: 1060px;
     padding: 0 12px;
     text-align: center;
     z-index: 502;
-    @include var(background-color, color-5);
-    @include var(color, top-bar-font-color);
+    background-color: $secondary-color;
+    color: $top-bar-font-color;
 
     @media screen and (min-width: $menu-breakpoint) {
       display: flex;
@@ -214,28 +220,28 @@ $menu-breakpoint: 1060px;
       margin-right: 22px;
       cursor: pointer;
       border-bottom: 1px solid transparent;
-      @include var(color, primary-button-text-color);
+      color: $primary-button-text-color;
 
       .material-icons {
         position: relative;
         top: 1px;
         margin-right: 6px;
         @include icon-size(17, !important);
-        @include var(color, primary-button-text-color, !important);
+        color: $primary-button-text-color;
       }
 
       &:hover,
       &:focus {
-        @include var(color, top-bar-hover-color, !important);
+        color: $top-bar-hover-color;
 
         .material-icons,
         span {
-          @include var(color, top-bar-hover-color, !important);
+          color: $top-bar-hover-color;
         }
 
         @include hc {
           border-bottom: 1px solid;
-          @include var(border-color, top-bar-hover-color, !important);
+          border-color: $top-bar-hover-color;
         }
       }
     }
@@ -259,7 +265,7 @@ $menu-breakpoint: 1060px;
     transition: top .25s ease-in-out;
     max-height: calc(100% - 107px);
     overflow-y: auto;
-    @include var(background-color, default-background);
+    background-color: $default-background;
 
     @media screen and (min-width: $menu-breakpoint) {
       display: none;
@@ -286,8 +292,8 @@ $menu-breakpoint: 1060px;
 
       &:hover,
       &:focus {
-        @include var(color, color-5);
-        @include var(border-color, color-5);
+        color: $secondary-color;
+        border-color: $secondary-color;
       }
 
       &--small {
@@ -363,7 +369,12 @@ $menu-breakpoint: 1060px;
       width: 100%;
     }
   }
+
   &__image-container {
     width: 100%;
+    
+    @media screen and (max-width: $res-xlarge) {
+      display: none;
+    }
   }
 }

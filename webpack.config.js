@@ -5,14 +5,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-const THEME_NAME = 'openfinance'
+const THEME_NAME = 'edula-odn'
 const entries = [
   'login',
-  'register',
   'login-reset-password',
-  'login-update-profile',
-  'login-idp-link-confirm',
-  'login-idp-link-email'
+  'fallback'
 ]
 
 module.exports = (env, argv) => {

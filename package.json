@@ -1,5 +1,5 @@
 {
-  "name": "open-finance",
+  "name": "edula-odn",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -42,6 +42,8 @@
     "webpack-cli": "^4.9.1"
   },
   "dependencies": {
-    "vue": "^3.2.26"
+    "materialize": "^1.0.0",
+    "materialize-css": "^1.0.0",
+    "vue": "^3.2.37"
   }
 }

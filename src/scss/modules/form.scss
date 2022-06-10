@@ -5,12 +5,8 @@
 
 .auth-area {
   
-  &__input {
-    height: 2.5rem !important;
-  }
-
   &__note {
-    @include var(color, secondary-text);
+    color: $secondary-text;
     margin: $primary-space * 2 0 0;
     text-align: center;
   }
@@ -22,9 +18,11 @@
   &__button {
     width: 70%;
     margin: 20px auto 0;
+    border-radius: 18px;
 
     &--additional {
-      color: var(--color-5, #742F8A);
+      color: $secondary-color;
+      text-align: center;
     }
   }
 
@@ -36,13 +34,11 @@
     span {
       margin-top: 20px;
       font-size: 14px;
-      @include var(color, secondary-text);
+      color: $secondary-text;
     }
   }
 
-  &__input{
-    @include var(color, primary-text);
-  }
+
 
   &__note {
     font-size: 14px;

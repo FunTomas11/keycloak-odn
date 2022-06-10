@@ -54,9 +54,10 @@
         <section class="generic-auth-area">
           <div class="generic-auth-area__form-container">
             <slot></slot>
+            <h1 v-if="!hasDefaultSlot">We are working on it...</h1>
           </div>
           <div class="generic-auth-area__image-container">
-            <img src="" class="img-responsive auth-area__image" alt="logo">
+            <img :src="getUrl(urls.resourcesPath) + '/images/auth-bg-transparent.png'" class="img-responsive auth-area__image" alt="logo">
           </div>
         </section>
       </div>
@@ -73,7 +74,7 @@ export default defineComponent({
     return useLogin();
   },
   data: () => ({
-    logo: '/images/viki-logo.svg',
+    logo: '/images/cyfrowa_lekcja_1200x500.svg',
     menuItems: [
       {
         translation: 'Materials',
@@ -91,6 +92,14 @@ export default defineComponent({
         title: 'user-guide'
       }
     ]
-  })
+  }),
+  computed: {
+    hasDefaultSlot () {
+      return !!this.$slots.default
+    },
+    hasFooterSlot() {
+      return !!this.$slots['footer'];
+    }
+  }
 })
 </script>

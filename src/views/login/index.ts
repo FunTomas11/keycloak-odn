@@ -2,7 +2,6 @@ import '~/scss/index.scss'
 import { createApp } from 'vue'
 import index from './index.vue'
 
-
 const environment = document.querySelector('#environment')
 if (environment) {
   const app = createApp(index);

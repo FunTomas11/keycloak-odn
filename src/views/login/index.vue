@@ -1,25 +1,33 @@
 <template>
   <layout>
-    <h3 class="title">{{ titles.loginAccountTitle }}</h3>
+    <div class="auth-area__login-content">
+      <form ref="authForm" :action="getUrl(urls.loginAction)" method="post">
+        <div class="flex-column-stretch">
+          <div class="input-field">
+            <input ref="username" name="username" v-on:change="test" id="username" type="text" :value="forms.loginUsername"
+                   class="auth-area__input" required autofocus>
+            <label for="username" :class="{ active: forms.loginUsername }" v-text="getUsernameLabel()"></label>
+            <span v-if="validations.usernameOrPassword" class="helper-text error-text" v-text="validations.usernameOrPassword"></span>
+          </div>
 
-    <form :action="getUrl(urls.loginAction)" method="post">
-      <div class="input-field">
-        <input name="username" type="text" :value="forms.loginUsername" class="validate auth-area__input">
-        <label for="username" v-text="getUsernameLabel()"></label>
-      </div>
-
-      <div class="input-field">
-        <input name="password" type="password"  class="validate auth-area__input">
-        <label for="username" v-text="labels.password"></label>
-      </div>
-      <button class="btn waves-effect waves-light" type="submit">Submit</button>
-    </form>
-    
+          <div class="input-field">
+            <input name="password" id="password" type="password" class="validate auth-area__input" required>
+            <label for="password" v-text="labels.password"></label>
+          </div>
+          <button class="btn waves-effect waves-dark auth-area__button" type="submit" v-text="labels.doLogIn"></button>
+          <div class="auth-area__button-wrapper">
+            <a :href="getUrl(urls.loginResetCredentials)" class="waves-effect waves-dark btn-flat auth-area__button auth-area__button--additional"
+                    v-text="labels.doForgotPassword" ></a>
+          </div>
+        </div>
+      </form>
+    </div>
   </layout>
 </template>
 <script lang="ts">
 import Layout from '~/components/Layout.vue'
-import { useLogin } from '~/hooks'
+import {useLogin} from '~/hooks'
+import {ref} from "vue";
 
 export default {
   name: 'Login',
@@ -27,10 +35,21 @@ export default {
     Layout
   },
   setup() {
+    console.log(useLogin().validations.value);
     return useLogin()
   },
+  data: () => ({
+    errorMessage: useLogin().validations.value
+  }),
+  methods: {
+    test(e: Event) {
+      console.log('Usename changed', this.forms.loginUsername)
+    }
+  },
   mounted() {
-    console.log('Login')
+   const username = this.$refs.username;
+    // username.value = 'Hej'
+    console.log('User', username.value)
   }
 }
 </script>

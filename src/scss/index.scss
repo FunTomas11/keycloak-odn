@@ -1,8 +1,7 @@
 @import 'src/scss/base/var';
-@import './base/global';
+@import "materialize-css";
 @import './base/material';
+@import './base/global';
 
 @import './modules/layout.scss';
 @import './modules/form.scss';
-
-//@use "material-components-web/material-components-web";

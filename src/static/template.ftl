@@ -1,21 +1,22 @@
 <#macro registrationLayout bodyClass="" displayInfo=false displayMessage=true displayRequiredFields=false showAnotherWayIfPresent=true>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" class="${properties.kcHtmlClass!}">
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml" class="${properties.kcHtmlClass!}">
 
-<head>
+  <head>
     <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="robots" content="noindex, nofollow">
     <title>${msg("loginTitle",(realm.displayName!''))}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <#nested "head">
-</head>
-<body>
+      <#nested "head">
+  </head>
+  <body>
   <div id="app"></div>
   <script id="environment" type="application/json">
     {
@@ -101,18 +102,31 @@
       },
       "social": [
         <#if realm.password && social.providers??>
-          <#list social.providers as p>
+      <#list social.providers as p>
             { 
               "alias": "${p.alias}",
               "displayName": "${p.displayName!}",
               "loginUrl": "${p.loginUrl}"
             }<#sep> </#sep>
-          </#list>
-        </#if>
+      </#list>
+      </#if>
       ]
     }
+  
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script type="module" src="${url.resourcesPath}/js/fallback.js"></script>
+  <script>
+    document.addEventListener('load', () => {
+      const appRef = document.getElementById('app');
+      if (appRef.innerHTML === '') {
+        const s = document.createElement('script');
+        s.setAttribute('src', '${url.resourcesPath}/js/fallback.js');
+      }
+      
+    });
   </script>
   <#nested "scripts">
-</body>
-</html>
+  </body>
+  </html>
 </#macro>
