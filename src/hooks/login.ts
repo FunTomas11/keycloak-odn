@@ -1,8 +1,15 @@
 import { inject, computed } from 'vue'
+import {RuntimeConfig} from "~/@types/runtime-config.model";
+
+const RUNTIME_CONFIG_KEY = 'APP_RUNTIME_CONFIG';
+const runtime: RuntimeConfig = window[RUNTIME_CONFIG_KEY] as RuntimeConfig;
+
+export function joinParts(...parts: string[]): string {
+  return parts.map(p => p.replace(/^\/+/, '')).map(p => p.replace(/\/+$/, '')).join('/');
+}
 
 export const useLogin = () => {
   const env = inject('environment') as Environment
-
   const getUrl = (url: string) => {
     return url.replace(/(&amp;)/g, '&')
   }
@@ -38,6 +45,21 @@ export const useLogin = () => {
   const getSumary = (message: string) => {
     return message.replace(/(&#64;)/g, '@')
   }
+  
+  const toAbsUrl = (url: string) => {
+    if (!url) {
+      return url;
+    }
+    if (url.indexOf('://') >= 0) {
+      return url;
+    }
+    if (url.indexOf('./') >= 0) {
+      return url;
+    }
+    const base = runtime.api.protocol + '://' + runtime.api.hostName + ':' + runtime.api.port + '/';
+    return joinParts(base, url);
+  }
+
 
   return {
     urls: computed(() => env.urls as EnvUrl),
@@ -53,6 +75,8 @@ export const useLogin = () => {
     getUrl,
     getUsernameLabel,
     getIcon,
-    getSumary
+    getSumary,
+    toAbsUrl,
+    runtime: computed(() => runtime as RuntimeConfig)
   }
 }

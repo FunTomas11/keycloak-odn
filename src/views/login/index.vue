@@ -1,7 +1,7 @@
 <template>
   <layout>
     <div class="auth-area__login-content">
-      <form ref="authForm" :action="getUrl(urls.loginAction)" method="post">
+      <form ref="authForm" :action="getUrl(urls.loginAction)" method="post"> 
         <div class="flex-column-stretch">
           <div class="input-field">
             <input ref="username" name="username" v-on:change="test" id="username" type="text" :value="forms.loginUsername"
@@ -16,7 +16,7 @@
           </div>
           <button class="btn waves-effect waves-dark auth-area__button" type="submit" v-text="labels.doLogIn"></button>
           <div class="auth-area__button-wrapper">
-            <a :href="getUrl(urls.loginResetCredentials)" class="waves-effect waves-dark btn-flat auth-area__button auth-area__button--additional"
+            <a v-if="permissions.resetPasswordAllowed" :href="getUrl(urls.loginResetCredentials)" class="waves-effect waves-dark btn-flat auth-area__button auth-area__button--additional"
                     v-text="labels.doForgotPassword" ></a>
           </div>
         </div>
@@ -41,15 +41,5 @@ export default {
   data: () => ({
     errorMessage: useLogin().validations.value
   }),
-  methods: {
-    test(e: Event) {
-      console.log('Usename changed', this.forms.loginUsername)
-    }
-  },
-  mounted() {
-   const username = this.$refs.username;
-    // username.value = 'Hej'
-    console.log('User', username.value)
-  }
 }
 </script>

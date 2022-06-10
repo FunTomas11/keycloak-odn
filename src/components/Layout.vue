@@ -21,22 +21,23 @@
         </div>
         <nav class="header__menu">
           <a class="header__menu-item"
+             @click="onMenuAction(menuItem.title)"
              tabindex="3"
              v-for="menuItem in menuItems">
-            <i class="material-icons">{{menuItem.icon}}</i>
+            <i class="material-icons">{{ menuItem.icon }}</i>
             <span>{{ menuItem.translation }}</span>
           </a>
         </nav>
         <button class="header__menu-button"
                 tabindex="2"
         >
-          <i class="material-icons">{{ showMenu ? 'close' : 'dehaze'}}</i>
+          <i class="material-icons">{{ showMenu ? 'close' : 'dehaze' }}</i>
         </button>
       </header>
       <nav class="mobile-menu" :class="{'mobile-menu--show': showMenu}">
         <div class="mobile-menu__item"
              v-for="menuItem in menuItems">
-          <i class="material-icons">{{menuItem.icon}}</i>
+          <i class="material-icons">{{ menuItem.icon }}</i>
           <span>{{ menuItem.translation }}</span>
         </div>
         <hr>
@@ -54,10 +55,10 @@
         <section class="generic-auth-area">
           <div class="generic-auth-area__form-container">
             <slot></slot>
-            <h1 v-if="!hasDefaultSlot">We are working on it...</h1>
           </div>
           <div class="generic-auth-area__image-container">
-            <img :src="getUrl(urls.resourcesPath) + '/images/auth-bg-transparent.png'" class="img-responsive auth-area__image" alt="logo">
+            <img :src="getUrl(urls.resourcesPath) + '/images/auth-bg-transparent.png'"
+                 class="img-responsive auth-area__image" alt="logo">
           </div>
         </section>
       </div>
@@ -93,12 +94,9 @@ export default defineComponent({
       }
     ]
   }),
-  computed: {
-    hasDefaultSlot () {
-      return !!this.$slots.default
-    },
-    hasFooterSlot() {
-      return !!this.$slots['footer'];
+  methods: {
+    onMenuAction(title: string) {
+      window.location.href = useLogin().toAbsUrl(title);
     }
   }
 })

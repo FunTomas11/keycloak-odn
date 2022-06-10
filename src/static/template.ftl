@@ -115,7 +115,7 @@
   
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script type="module" src="${url.resourcesPath}/js/fallback.js"></script>
+  <script src="${url.resourcesPath}/js/runtime-config.js" type="application/javascript"></script>
   <script>
     document.addEventListener('load', () => {
       const appRef = document.getElementById('app');
