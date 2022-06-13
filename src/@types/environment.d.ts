@@ -50,7 +50,6 @@ interface EnvLabel {
 interface EnvForm {
   loginUsername: string
   loginRememberMe: boolean
-  selectedCredential: string
   registerFirstName: string
   registerLastName: string
   registerEmail: string

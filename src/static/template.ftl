@@ -68,7 +68,6 @@
       "forms": {
         "loginUsername": "${(login.username!'')}",
         "loginRememberMe": <#if login.rememberMe??>true<#else>false</#if>,
-        "selectedCredential": "${(auth.selectedCredential!'')}",
         "registerFirstName": <#if register??>"${(register.formData.firstName!'')}"<#else>""</#if>,
         "registerLastName": <#if register??>"${(register.formData.lastName!'')}"<#else>""</#if>,
         "registerEmail": <#if register??>"${(register.formData.email!'')}"<#else>""</#if>,
@@ -81,13 +80,12 @@
         "lastName": <#if user??>"${(user.lastName!'')}"<#else>""</#if>
       },
       "validations": {
-        "firstName": <#if messagesPerField.existsError('firstName')>"${kcSanitize(messagesPerField.get('firstName'))?no_esc}"<#else>""</#if>,
-        "lastName":  <#if messagesPerField.existsError('lastName')>"${kcSanitize(messagesPerField.get('lastName'))?no_esc}"<#else>""</#if>,
-        "email": <#if messagesPerField.existsError('email')>"${kcSanitize(messagesPerField.get('email'))?no_esc}"<#else>""</#if>,
-        "usernameOrPassword": <#if messagesPerField.existsError('username','password')>"${kcSanitize(messagesPerField.getFirstError('username','password'))?no_esc}"<#else>""</#if>,
-        "username": <#if messagesPerField.existsError('username')>"${kcSanitize(messagesPerField.get('username'))?no_esc}"<#else>""</#if>,
-        "password": <#if messagesPerField.existsError('password')>"${kcSanitize(messagesPerField.get('password'))?no_esc}"<#else>""</#if>,
-        "passwordConfirm": <#if messagesPerField.existsError('password-confirm')>"${kcSanitize(messagesPerField.get('password-confirm'))?no_esc}"<#else>""</#if>
+        "firstName":"${kcSanitize(messagesPerField.get('firstName'))?no_esc}",
+        "lastName":  "${kcSanitize(messagesPerField.get('lastName'))?no_esc}",
+        "email": "${kcSanitize(messagesPerField.get('email'))?no_esc}",
+        "username": "${kcSanitize(messagesPerField.get('username'))?no_esc}",
+        "password": "${kcSanitize(messagesPerField.get('password'))?no_esc}",
+        "passwordConfirm": "${kcSanitize(messagesPerField.get('password-confirm'))?no_esc}"
       },
       "message": {
         "type": <#if displayMessage && message?has_content && (message.type != 'warning' || !isAppInitiatedAction??)>"${message.type}"<#else>""</#if>,
@@ -117,14 +115,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="${url.resourcesPath}/js/runtime-config.js" type="application/javascript"></script>
   <script>
-    document.addEventListener('load', () => {
-      const appRef = document.getElementById('app');
-      if (appRef.innerHTML === '') {
-        const s = document.createElement('script');
-        s.setAttribute('src', '${url.resourcesPath}/js/fallback.js');
-      }
-      
-    });
+      document.addEventListener('load', () => {
+        const appRef = document.getElementById('app');
+        if (appRef.innerHTML === '') {
+          const s = document.createElement('script');
+          s.setAttribute('src', '${url.resourcesPath}/js/fallback.js');
+          document.body.appendChild(s);
+        }
+      });
   </script>
   <#nested "scripts">
   </body>
