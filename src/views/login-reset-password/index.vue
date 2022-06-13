@@ -39,7 +39,6 @@ export default defineComponent({
     return useLogin()
   },
   mounted() {
-    console.log('ResetPassword')
   }
 })
 </script>

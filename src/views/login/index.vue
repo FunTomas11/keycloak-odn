@@ -35,7 +35,6 @@ export default {
     Layout
   },
   setup() {
-    console.log(useLogin().validations.value);
     return useLogin()
   },
   data: () => ({

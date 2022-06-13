@@ -22,7 +22,6 @@ export default defineComponent({
     return useLogin()
   },
   mounted() {
-    console.log('Error')
   }
 })
 </script>
