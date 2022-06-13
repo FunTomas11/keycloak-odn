@@ -67,6 +67,7 @@
         "doClickHere": "${msg("doClickHere")}",
         "backToApplication": "${kcSanitize(msg("backToApplication"))?no_esc}",
         "passwordNew": "${msg("passwordNew")}"
+        
       },
       "forms": {
         "loginUsername": "${(login.username!'')}",
@@ -88,12 +89,14 @@
         "email": "${kcSanitize(messagesPerField.get('email'))?no_esc}",
         "username": "${kcSanitize(messagesPerField.get('username'))?no_esc}",
         "password": "${kcSanitize(messagesPerField.get('password'))?no_esc}",
-        "passwordConfirm": "${kcSanitize(messagesPerField.get('password-confirm'))?no_esc}"
+        "passwordConfirm": "${kcSanitize(messagesPerField.get('password-confirm'))?no_esc}",
+        "invalidUser": "${kcSanitize(messagesPerField.get('invalid-user'))?no_esc}"
       },
       "message": {
         "type": <#if displayMessage && message?has_content && (message.type != 'warning' || !isAppInitiatedAction??)>"${message.type}"<#else>""</#if>,
         "sumary": <#if displayMessage && message?has_content && (message.type != 'warning' || !isAppInitiatedAction??)>"${kcSanitize(message.summary)?no_esc}"<#else>""</#if>,
-        "notMatchPasswordMessage": "${msg('notMatchPasswordMessage')}"
+        "notMatchPasswordMessage": "${msg('notMatchPasswordMessage')}",
+        "invalidUserMessage": "${msg('invalidUserMessage')}"
 
       },
       "instruction": {

@@ -74,13 +74,15 @@ interface EnvValidation {
   usernameOrPassword: string
   username: string
   password: string
-  passwordConfirm: string
+  passwordConfirm: string,
+  invalidUser: string,
 }
 
 interface EnvMessage {
   type: string
   sumary: string,
-  notMatchPasswordMessage: string,
+  notMatchPasswordMessage: string
+  invalidUserMessage: string,
 }
 
 interface EnvInstruction {
