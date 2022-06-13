@@ -126,7 +126,12 @@ $menu-breakpoint: 1060px;
     }
 
     &__menu-button {
-      display: block;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
       @media screen and (min-width: $menu-breakpoint) {
         display: none;
@@ -135,6 +140,7 @@ $menu-breakpoint: 1060px;
       .material-icons {
         position: relative;
         top: 1px;
+        margin-top: 2px;
 
         color: $secondary-color;
         @include icon-size(26, !important);
@@ -270,6 +276,8 @@ $menu-breakpoint: 1060px;
     max-height: calc(100% - 107px);
     overflow-y: auto;
     background-color: $default-background;
+    height: unset;
+    line-height: unset;
 
     @media screen and (min-width: $menu-breakpoint) {
       display: none;
@@ -292,7 +300,7 @@ $menu-breakpoint: 1060px;
       padding: 0 16px;
       flex: 1 0 auto;
       border-left: 2px solid transparent;
-      @include var(color, inactive-menu-item-color);
+      color: $inactive-menu-item-color;
 
       &:hover,
       &:focus {
@@ -345,7 +353,7 @@ $menu-breakpoint: 1060px;
   z-index: 500;
   opacity: 0;
   transition: opacity .25s ease-in-out;
-  @include var(background-color, dimmer-color);
+  background-color: $dimmer-color;
 
   @media screen and (min-width: $menu-breakpoint) {
     display: none !important;
@@ -369,7 +377,7 @@ $menu-breakpoint: 1060px;
       max-width: 350px;
     }
 
-    mat-form-field {
+    .input-field {
       width: 100%;
     }
   }
