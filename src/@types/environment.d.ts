@@ -14,6 +14,7 @@ interface EnvTitle {
   emailForgotTitle: string
   confirmLinkIdpTitle: string
   emailLinkIdpTitle: string
+  updatePasswordTitle: string
 }
 
 interface EnvPermission {
@@ -45,6 +46,8 @@ interface EnvLabel {
   backToLogin: string
   confirmLinkIdpContinue: string
   doClickHere: string
+  passwordNew: string,
+  backToApplication: string,
 }
 
 interface EnvForm {
@@ -76,7 +79,8 @@ interface EnvValidation {
 
 interface EnvMessage {
   type: string
-  sumary: string
+  sumary: string,
+  notMatchPasswordMessage: string,
 }
 
 interface EnvInstruction {

@@ -25,6 +25,10 @@ $menu-breakpoint: 1060px;
   @media screen and (min-width: $menu-breakpoint) {
     padding-top: 36px;
   }
+  
+  &__info {
+    font-size: 12px;
+  }
 
   &--show-mobile-menu {
     overflow: hidden;

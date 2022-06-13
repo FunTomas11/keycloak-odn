@@ -34,7 +34,8 @@
         "registerTitle": "${msg("registerTitle")}",
         "emailForgotTitle": "${msg("emailForgotTitle")}",
         "confirmLinkIdpTitle": "${msg("confirmLinkIdpTitle")}",
-        "emailLinkIdpTitle": "${msg("emailLinkIdpTitle", idpDisplayName)}"
+        "emailLinkIdpTitle": "${msg("emailLinkIdpTitle", idpDisplayName)}",
+        "updatePasswordTitle": "${msg("updatePasswordTitle")}"
       },
       "permissions": {
         "usernameEditDisabled": <#if usernameEditDisabled??>true<#else>false</#if>,
@@ -63,7 +64,9 @@
         "doRegister": "${msg("doRegister")}",
         "backToLogin": "${kcSanitize(msg("backToLogin"))?no_esc}",
         "confirmLinkIdpContinue": "${msg("confirmLinkIdpContinue")}",
-        "doClickHere": "${msg("doClickHere")}"
+        "doClickHere": "${msg("doClickHere")}",
+        "backToApplication": "${kcSanitize(msg("backToApplication"))?no_esc}",
+        "passwordNew": "${msg("passwordNew")}"
       },
       "forms": {
         "loginUsername": "${(login.username!'')}",
@@ -89,7 +92,9 @@
       },
       "message": {
         "type": <#if displayMessage && message?has_content && (message.type != 'warning' || !isAppInitiatedAction??)>"${message.type}"<#else>""</#if>,
-        "sumary": <#if displayMessage && message?has_content && (message.type != 'warning' || !isAppInitiatedAction??)>"${kcSanitize(message.summary)?no_esc}"<#else>""</#if>
+        "sumary": <#if displayMessage && message?has_content && (message.type != 'warning' || !isAppInitiatedAction??)>"${kcSanitize(message.summary)?no_esc}"<#else>""</#if>,
+        "notMatchPasswordMessage": "${msg('notMatchPasswordMessage')}"
+
       },
       "instruction": {
         "emailLinkIdp1": "${msg("emailLinkIdp1", idpDisplayName, realm.displayName)}",

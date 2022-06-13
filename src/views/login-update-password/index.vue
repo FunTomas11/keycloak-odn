@@ -1,29 +1,29 @@
 <template>
   <layout>
-    <h1>Update password</h1>
-<!--    <div v-if="message.sumary" :class="`alert-${message.type}`">-->
-<!--      <span v-html="getIcon(message.type)"></span>-->
-<!--      <span v-text="message.sumary"></span>-->
-<!--    </div>-->
-<!--    <form :action="getUrl(urls.loginAction)"-->
-<!--          method="post"-->
-<!--          novalidate-->
-<!--          class="forgot-password-form"-->
-<!--    >-->
-<!--      <span class="reset-password__title" v-text="titles.emailForgotTitle"></span>-->
-<!--      <div class="input-field">-->
-<!--        <input name="username" v-on:change="test" id="username" type="text" :value="forms.loginUsername"-->
-<!--               class="auth-area__input" maxlength="50">-->
-<!--        <label for="username" v-text="getUsernameLabel()"></label>-->
-<!--        <span v-if="validations.usernameOrPassword"-->
-<!--              class="helper-text error-text">{{ validations.usernameOrPassword }}</span>-->
-<!--      </div>-->
-<!--      <button-->
-<!--        type="submit"-->
-<!--        class="forgot-button"-->
-<!--        v-text="labels.doSubmit"></button>-->
-<!--      <a :href="getUrl(urls.login)" class="forgot-button additional" v-text="labels.backToLogin"></a>-->
-<!--    </form>-->
+    <form :action="getUrl(urls.loginAction)" class="forgot-password-form" method="post">
+      <span class="reset-password__title" v-text="titles.updatePasswordTitle">
+      </span>
+      <span class="auth__info reset-password__subtitle error-text" v-text="message.sumary"></span>
+      <input type="text" id="username" name="username" :value="forms.loginUsername" autocomplete="username" readonly="readonly" style="display:none;"/>
+      <input type="password" id="password" name="password" autocomplete="current-password" style="display:none;"/>
+      <div class="input-field">
+        <input name="password-new" v-model="form.pass" id="password-new" type="password"
+               class="auth-area__input" maxlength="50" autofocus autocomplete="new-password">
+        <label for="password-new" v-text="labels.passwordNew"></label>
+      </div>
+      <div class="input-field">
+        <input name="password-confirm" v-model="form.confirm" v-on:change="checkForm" id="password-confirm" type="password"
+               class="auth-area__input" maxlength="50" autocomplete="new-password">
+        <label for="password-confirm" v-text="labels.passwordConfirm"></label>
+        <span v-if="form.invalid" class="helper-text error-text" v-text="message.notMatchPasswordMessage"></span>
+      </div>
+      <button
+        type="submit"
+        class="btn waves-effect waves-dark auth-area__button"
+        :disabled="form.invalid"
+        v-text="labels.doSubmit"></button>
+
+    </form>
 
   </layout>
 </template>
@@ -33,15 +33,26 @@ import Layout from '~/components/Layout.vue'
 import {useLogin} from '~/hooks'
 
 export default defineComponent({
-  name: 'ResetPassword',
+  name: 'UpdatePassword',
   components: {
     Layout
   },
+  data: () => ({
+    form: {
+      pass: '',
+      confirm: '',
+      invalid: false,
+    }
+  }),
   setup() {
     return useLogin()
   },
+  methods: {
+    checkForm() {
+      this.form.invalid = this.form.pass !== this.form.confirm;
+    }
+  },
   mounted() {
-    console.log('ResetPassword')
   }
 })
 </script>
