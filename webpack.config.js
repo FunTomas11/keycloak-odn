@@ -9,6 +9,8 @@ const THEME_NAME = 'edula-odn'
 const entries = [
   'login',
   'login-reset-password',
+  'login-update-password',
+  'error',
   'fallback'
 ]
 

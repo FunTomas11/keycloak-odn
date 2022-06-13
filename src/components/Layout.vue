@@ -2,16 +2,16 @@
   <div class="auth">
     <div class="top-bar">
     <span class="top-bar__actions">
-      <a class="top-bar__action"
-         tabindex="1">
-          <i class="material-icons">filter_b_and_w</i>
-          <span>High contrast</span>
-      </a>
-      <button class="top-bar__language-button"
-              tabindex="2">
-        <i class="material-icons">language</i>
-        <span>Language</span>
-      </button>
+<!--      <a class="top-bar__action"-->
+<!--         tabindex="1">-->
+<!--          <i class="material-icons">filter_b_and_w</i>-->
+<!--          <span>High contrast</span>-->
+<!--      </a>-->
+<!--      <button class="top-bar__language-button"-->
+<!--              tabindex="2">-->
+<!--        <i class="material-icons">language</i>-->
+<!--        <span>Language</span>-->
+<!--      </button>-->
     </span>
     </div>
     <div class="auth__wrapper">

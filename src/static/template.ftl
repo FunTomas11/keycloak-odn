@@ -103,6 +103,10 @@
         "emailLinkIdp4": "${msg("emailLinkIdp4")}",
         "emailLinkIdp5": "${msg("emailLinkIdp5")}"
       },
+      "client": {
+              "baseUrl": "${client.baseUrl}",
+              "clientExists": <#if client?? && client.baseUrl?has_content>true<#else>false</#if>
+      },
       "social": [
         <#if realm.password && social.providers??>
       <#list social.providers as p>

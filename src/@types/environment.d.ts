@@ -4,7 +4,7 @@ interface EnvUrl {
   login: string
   loginAction: string
   registrationAction: string
-  resourcesPath: string
+  resourcesPath: string,
 }
 
 interface EnvTitle {
@@ -91,6 +91,11 @@ interface EnvInstruction {
   emailLinkIdp5: string
 }
 
+interface EnvClient {
+  baseUrl: string,
+  clientExists: boolean,
+}
+
 interface EnvSocial {
   alias: string
   displayName: string
@@ -107,5 +112,6 @@ interface Environment {
   validations: EnvValidation
   message: EnvMessage
   social: EnvSocial[]
-  instruction: EnvInstruction
+  instruction: EnvInstruction,
+  client: EnvClient,
 }
