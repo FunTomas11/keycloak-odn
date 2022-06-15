@@ -8,6 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="robots" content="noindex, nofollow">
     <title>${msg("loginTitle",(realm.displayName!''))}</title>
+    <link rel="icon" href="${url.resourcesPath}/images/cyfrowa_lekcja_500x500_kwadrat.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -105,10 +106,6 @@
         "emailLinkIdp3": "${msg("emailLinkIdp3")}",
         "emailLinkIdp4": "${msg("emailLinkIdp4")}",
         "emailLinkIdp5": "${msg("emailLinkIdp5")}"
-      },
-      "client": {
-              "baseUrl": "${client.baseUrl}",
-              "clientExists": <#if client?? && client.baseUrl?has_content>true<#else>false</#if>
       },
       "social": [
         <#if realm.password && social.providers??>
