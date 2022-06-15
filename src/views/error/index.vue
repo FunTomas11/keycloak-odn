@@ -2,9 +2,7 @@
   <layout>
     <div id="kc-error-message">
       <p v-text="message.sumary"></p>
-      <p v-if="client.clientExists">
-        <a :href="getUrl(client.baseUrl)" v-text="labels.backToApplication"></a>
-      </p>
+      <a :href="getUrl(urls.login)" v-text="labels.backToApplication"></a>
     </div>
   </layout>
 </template>

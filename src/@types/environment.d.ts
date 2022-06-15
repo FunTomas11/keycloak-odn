@@ -93,10 +93,6 @@ interface EnvInstruction {
   emailLinkIdp5: string
 }
 
-interface EnvClient {
-  baseUrl: string,
-  clientExists: boolean,
-}
 
 interface EnvSocial {
   alias: string
@@ -115,5 +111,4 @@ interface Environment {
   message: EnvMessage
   social: EnvSocial[]
   instruction: EnvInstruction,
-  client: EnvClient,
 }
