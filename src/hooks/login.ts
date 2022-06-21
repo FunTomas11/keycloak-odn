@@ -72,7 +72,6 @@ export const useLogin = () => {
     message: computed(() => env.message as EnvMessage),
     social: computed(() => env.social as EnvSocial[]),
     instruction: computed(() => env.instruction as EnvInstruction),
-    client: computed(() => env.client as EnvClient),
     getUrl,
     getUsernameLabel,
     getIcon,

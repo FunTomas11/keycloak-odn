@@ -64,6 +64,10 @@
         <section class="generic-auth-area">
           <div class="generic-auth-area__form-container">
             <slot></slot>
+            <div class="auth__additional">
+              <span>or</span><br>
+              <a class="waves-effect waves-dark btn-flat auth-area__button auth-area__button--additional" :href="getLocalLoginUri()">Login via Edula</a>
+            </div>
           </div>
           <div class="generic-auth-area__image-container">
             <img :src="getUrl(urls.resourcesPath) + '/images/auth-bg-transparent.png'"
@@ -109,7 +113,9 @@ export default defineComponent({
     onMenuAction(title: string) {
       window.location.href = useLogin().toAbsUrl(title);
     },
-    
+    getLocalLoginUri(): string {
+      return useLogin().toAbsUrl('login');
+    },
     toggleMobileMenu(directChange?: boolean) {
       if (directChange) {
         this.showMenu = directChange;

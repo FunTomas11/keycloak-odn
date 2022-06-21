@@ -34,6 +34,12 @@ $menu-breakpoint: 1060px;
     overflow: hidden;
   }
 
+  &__additional {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   &--enabled-project-theme {
     .header__menu-item,
     .mobile-menu__item {
