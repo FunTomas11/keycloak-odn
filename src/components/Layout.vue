@@ -101,6 +101,11 @@ export default defineComponent({
         title: 'student-assignments'
       },
       {
+        translation: 'Use forms code',
+        icon: 'vpn_key',
+        title: 'forms'
+      },
+      {
         translation: 'Open user guide',
         icon: 'local_library',
         title: 'user-guide'
