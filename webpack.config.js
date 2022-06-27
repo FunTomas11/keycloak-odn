@@ -1,8 +1,8 @@
 const path = require('path')
-const { VueLoaderPlugin } = require('vue-loader')
-const { EnvironmentPlugin } = require('webpack')
+const {VueLoaderPlugin} = require('vue-loader')
+const {EnvironmentPlugin} = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const THEME_NAME = 'edula-odn'
@@ -77,7 +77,7 @@ module.exports = (env, argv) => {
               loader: 'postcss-loader',
               options: {
                 postcssOptions: {
-                  plugins: { autoprefixer: {} }
+                  plugins: {autoprefixer: {}}
                 }
               }
             },
@@ -108,19 +108,32 @@ module.exports = (env, argv) => {
         patterns: [
           {
             from: path.resolve(__dirname, 'src', 'static'),
+            globOptions: {
+              ignore: ['**/images']
+            },
             to: path.resolve(__dirname, '..', 'themes', THEME_NAME, 'login')
+          },
+          {
+            from: path.resolve(__dirname, 'src', 'static', 'images'),
+            to: path.resolve(__dirname, '..', 'themes', THEME_NAME, 'login', 'resources', 'images')
+          },
+          {
+            from: path.resolve(__dirname, 'runtime-config.js'),
+            to: path.resolve(__dirname, '..', 'themes', THEME_NAME, 'login', 'resources', 'js')
           }
+
+
         ]
       })
     ],
     ...(isDevelopment
       ? {}
       : {
-          optimization: {
-            removeAvailableModules: false,
-            removeEmptyChunks: false,
-            splitChunks: false
-          }
-        })
+        optimization: {
+          removeAvailableModules: false,
+          removeEmptyChunks: false,
+          splitChunks: false
+        }
+      })
   }
 }
